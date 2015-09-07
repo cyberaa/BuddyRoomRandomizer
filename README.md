@@ -9,4 +9,5 @@
 <br />
 Screenshots
 -----------
-[![mutt dark](https://github.com/cyberaa/BuddyRoomRandomizer/blob/master/screenshots/1.png)](https://github.com/altercation/solarized/raw/master/img/screen-mutt-dark.png)
+[![s1](https://github.com/cyberaa/BuddyRoomRandomizer/blob/master/screenshots/1.png)](https://github.com/cyberaa/BuddyRoomRandomizer/blob/master/screenshots/1.png)
+[![s2](https://github.com/cyberaa/BuddyRoomRandomizer/blob/master/screenshots/2.png)](https://github.com/cyberaa/BuddyRoomRandomizer/blob/master/screenshots/2.png)
