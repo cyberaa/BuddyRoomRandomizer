@@ -6,6 +6,10 @@
 
 <strong> f(min,max)</strong> where a random seed is generated and <strong>( ( max - min ) + 1 + min).</strong>
 
+#Installation
+------------
+ - Not needed since its Java, all you have to do is run the *.jar file that is located on dist folder.
+
 <br />
 Screenshots
 -----------
