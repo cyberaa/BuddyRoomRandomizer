@@ -90,6 +90,7 @@ public class Main extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BuddyRoomRandomizer");
 
         jScrollPane1.setViewportView(jList1);
 
@@ -182,7 +183,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         nameaddfield.getAccessibleContext().setAccessibleName("");
-        nameaddfield.getAccessibleContext().setAccessibleDescription("");
 
         jTabbedPane1.addTab("Randomizer", jPanel1);
 
