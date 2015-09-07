@@ -571,7 +571,7 @@ public class Main extends javax.swing.JFrame {
                     int sorteio = randInt(0, 2);
                     System.out.println(sorteio);
                     String cand = candidatos.getElementAt(sorteio);
-                    jTextArea1.setText(array[0]+ " - "+ cand +"\n");
+                    jTextArea1.setText(" "+array[0]+ " - "+ cand +"\n");
                     if(sorteio == 0)
                     {
                         int sorteio2 = randInt(0,1);
