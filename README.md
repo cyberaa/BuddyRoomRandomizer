@@ -5,3 +5,6 @@
 # Random Function
 
 <strong> f(min,max)</strong> where a random seed is generated and <strong>( ( max - min ) + 1 + min).</strong>
+
+Screenshots
+-----------
