@@ -1,6 +1,6 @@
 # BuddyRoomRandomizer
 #Description
-Small App to assign random rooms in a totally random way without any kind of interference. This App was written in Java uses SWING for its GUI and also uses custom functions for randomizing the rooms.
+ - Small App to assign random rooms in a totally random way without any kind of interference. This App was written in Java uses SWING for its GUI and also uses custom functions for randomizing the rooms.
 
 # Random Function
 
