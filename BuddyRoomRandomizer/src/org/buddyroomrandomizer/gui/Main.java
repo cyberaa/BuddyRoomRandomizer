@@ -7,6 +7,9 @@ package org.buddyroomrandomizer.gui;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.Random;
+import java.util.StringTokenizer;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JTextField;
@@ -21,7 +24,10 @@ public class Main extends javax.swing.JFrame {
     
     public static DefaultListModel<String> nomes = new DefaultListModel<>();
     public static DefaultListModel<String> candidatos = new DefaultListModel<>();
-
+    public static DefaultComboBoxModel<String> t3list = new DefaultComboBoxModel<>();
+    public static DefaultComboBoxModel<String> t2list = new DefaultComboBoxModel<>();
+    public static DefaultComboBoxModel<String> t4list = new DefaultComboBoxModel<>();
+    public static DefaultComboBoxModel<String> t5list = new DefaultComboBoxModel<>();
     /**
      *
      */
@@ -35,6 +41,11 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         this.setFocusable(true);
         
+    }
+    public static int randInt(int min,int max)
+    {
+        Random randomN = new Random();
+        return randomN.nextInt(((max-min)+1)+min);
     }
 
     /**
@@ -57,7 +68,22 @@ public class Main extends javax.swing.JFrame {
         jList2 = new javax.swing.JList();
         rightbtn = new javax.swing.JButton();
         leftbtn = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jPanel3 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jPanel5 = new javax.swing.JPanel();
+        t5btn = new javax.swing.JCheckBox();
+        t4btn = new javax.swing.JCheckBox();
+        t3btn = new javax.swing.JCheckBox();
+        t2btn = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -67,8 +93,8 @@ public class Main extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jList1);
 
-        nameaddfield.setText("teste");
-        nameaddfield.setToolTipText("teste");
+        nameaddfield.setText("Name to Add");
+        nameaddfield.setToolTipText("");
         nameaddfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameaddfieldActionPerformed(evt);
@@ -116,23 +142,23 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(nameaddfield, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nameaddfield, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rightbtn, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(leftbtn, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jButton2)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42))
         );
         jPanel1Layout.setVerticalGroup(
@@ -143,22 +169,35 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(nameaddfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(rightbtn)
                         .addGap(27, 27, 27)
-                        .addComponent(leftbtn)))
-                .addContainerGap(142, Short.MAX_VALUE))
+                        .addComponent(leftbtn))
+                    .addComponent(jScrollPane2))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         nameaddfield.getAccessibleContext().setAccessibleName("");
         nameaddfield.getAccessibleContext().setAccessibleDescription("");
 
         jTabbedPane1.addTab("Randomizer", jPanel1);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jButton3.setText("Randomize");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Exit");
         jButton5.setToolTipText("");
@@ -167,6 +206,140 @@ public class Main extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addGap(14, 14, 14))
+        );
+
+        jLabel3.setText("Results");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jLabel1.setText("Created by João Jesus - 2015");
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        t5btn.setText(" T5");
+        t5btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t5btnActionPerformed(evt);
+            }
+        });
+
+        t4btn.setText(" T4");
+        t4btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t4btnActionPerformed(evt);
+            }
+        });
+
+        t3btn.setText(" T3");
+        t3btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t3btnActionPerformed(evt);
+            }
+        });
+
+        t2btn.setText(" T2");
+        t2btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t2btnActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Topology");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(t2btn)
+                        .addGap(61, 61, 61)
+                        .addComponent(t3btn)
+                        .addGap(59, 59, 59)
+                        .addComponent(t4btn)
+                        .addGap(57, 57, 57)
+                        .addComponent(t5btn))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(t5btn)
+                    .addComponent(t4btn)
+                    .addComponent(t3btn)
+                    .addComponent(t2btn))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
 
         jMenu1.setText("File");
 
@@ -190,22 +363,36 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(8, 8, 8))))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -216,6 +403,37 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(-9); //System Kill
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        System.exit(-9);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void leftbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftbtnActionPerformed
+        // TODO add your handling code here:
+
+        if(candidatos.contains(jList2.getSelectedValue().toString()))
+        {
+            String l = jList2.getSelectedValue().toString();
+            candidatos.removeElement(l);
+            nomes.addElement(l);
+        }
+
+    }//GEN-LAST:event_leftbtnActionPerformed
+
+    private void rightbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightbtnActionPerformed
+        // TODO add your handling code here:
+        if(nomes.contains(jList1.getSelectedValue().toString()))
+        {
+            String l = jList1.getSelectedValue().toString();
+            System.out.println(l);
+            nomes.removeElement(l);
+            candidatos.addElement(l);
+            jList2.setModel(candidatos);
+
+        }
+    }//GEN-LAST:event_rightbtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -232,36 +450,189 @@ public class Main extends javax.swing.JFrame {
         if(l!= null)
         {
             nomes.addElement(l);
-            jList1.setModel(nomes);
+            jList1.setModel(nomes); // have to create a new model each time an item is added
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void nameaddfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameaddfieldFocusGained
+        // TODO add your handling code here:
+        nameaddfield.setText(""); //when focus is gained in names field it removes the placeholder text
+
+    }//GEN-LAST:event_nameaddfieldFocusGained
+
     private void nameaddfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameaddfieldActionPerformed
         // TODO add your handling code here:
-    
-        
 
     }//GEN-LAST:event_nameaddfieldActionPerformed
 
-    private void rightbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightbtnActionPerformed
+    private void t5btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t5btnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rightbtnActionPerformed
+        if(t5btn.isSelected())
+        {
+            t2btn.setSelected(false);
+            t3btn.setSelected(false);
+            t4btn.setSelected(false);
+            t5list.addElement("1 Smaller Room A, 1 Smaller Room B, 1 Medium Room C,1 Medium Room D,1 Suite");
+            t5list.addElement("1 Smaller Room, 1 Medium Room A, 1 Large Room B, 1 Suite C, 1 Suite D");
+            jComboBox1.setModel(t5list);
 
-    private void leftbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_leftbtnActionPerformed
+        }
+    }//GEN-LAST:event_t5btnActionPerformed
 
-    
-    private void nameaddfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameaddfieldFocusGained
+    private void t2btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t2btnActionPerformed
         // TODO add your handling code here:
-            nameaddfield.setText(""); //when focus is gained in names field it removes the placeholder text
+        if(t2btn.isSelected())
+        {
+            t5btn.setSelected(false);
+            t3btn.setSelected(false);
+            t4btn.setSelected(false);
             
-    }//GEN-LAST:event_nameaddfieldFocusGained
+            t2list.addElement("1 Room A, 1 Room B");
+            jComboBox1.setModel(t2list);
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        }
+        
+    }//GEN-LAST:event_t2btnActionPerformed
+
+    private void t3btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t3btnActionPerformed
         // TODO add your handling code here:
-        System.exit(-9);
-    }//GEN-LAST:event_jButton5ActionPerformed
+        if(t3btn.isSelected())
+        {
+            t5btn.setSelected(false);
+            t2btn.setSelected(false);
+            t4btn.setSelected(false);
+            t3list.addElement("1 Smaller Room, 1 Small Room, 1 Medium Room");
+            t3list.addElement("1 Small Room, 1 Large Room, 1 Suite");
+            jComboBox1.setModel(t3list);
+
+        }
+    }//GEN-LAST:event_t3btnActionPerformed
+
+    private void t4btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t4btnActionPerformed
+        // TODO add your handling code here:
+        if(t4btn.isSelected())
+        {
+            t5btn.setSelected(false);
+            t3btn.setSelected(false);
+            t2btn.setSelected(false);
+            t4list.addElement("1 Smaller Room A, 1 Smaller Room B, 1 Medium Room C,1 Medium Room D");
+            t4list.addElement("1 Smaller Room, 1 Medium Room, 1 Large Room, 1 Suite");
+            jComboBox1.setModel(t4list);
+
+        }
+    }//GEN-LAST:event_t4btnActionPerformed
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(t2btn.isSelected() || t3btn.isSelected() || t4btn.isSelected() || t5btn.isSelected() )
+        {
+            if(!candidatos.isEmpty())
+            {
+                if(t2btn.isSelected() && candidatos.getSize()>2)
+                {
+                    jTextArea1.setText("(The Flat is smaller than the number of candidates) - Someone is going to sleep outdoors...");
+                }
+                if(t3btn.isSelected() && candidatos.getSize()>3)
+                {
+                    jTextArea1.setText("(The Flat is smaller than the number of candidates) - Someone is going to sleep outdoors...");
+                }
+                if(t4btn.isSelected() && candidatos.getSize()>4)
+                {
+                    jTextArea1.setText("(The Flat is smaller than the number of candidates) - Someone is going to sleep outdoors...");
+                }
+                if(t5btn.isSelected() && candidatos.getSize()>5)
+                {
+                    jTextArea1.setText("(The Flat is smaller than the number of candidates) - Someone is going to sleep outdoors...");
+                }
+                
+                if(t2btn.isSelected() && candidatos.getSize() == 2)
+                {
+                    String l = jComboBox1.getSelectedItem().toString();
+                    int sorteio = randInt(0, 1);
+                    String cand = candidatos.getElementAt(sorteio);
+                    jTextArea1.setText("Room A - " + cand +"\n");
+                    if(sorteio == 0)
+                        jTextArea1.append("Room B - " + candidatos.getElementAt(1));
+                    else
+                        jTextArea1.append("Room B - " + candidatos.getElementAt(0));
+                    
+                }
+                if(t3btn.isSelected() && candidatos.getSize() == 3)
+                {
+                    String l = jComboBox1.getSelectedItem().toString();
+                    StringTokenizer st = new StringTokenizer(l,",");
+                    String [] array = new String[3];
+                    int i = 0;
+                    while(st.hasMoreElements())
+                    {
+                        array[i] = st.nextElement().toString();
+                        i++;
+                    }
+                    int sorteio = randInt(0, 2);
+                    System.out.println(sorteio);
+                    String cand = candidatos.getElementAt(sorteio);
+                    jTextArea1.setText(array[0]+ " - "+ cand +"\n");
+                    if(sorteio == 0)
+                    {
+                        int sorteio2 = randInt(0,1);
+                         System.out.println(sorteio2);
+                        if(sorteio2 == 0)
+                        {
+                            jTextArea1.append(array[1] + " - "+ candidatos.getElementAt(1)+"\n");
+                            jTextArea1.append(array[2] + " - "+ candidatos.getElementAt(2)+"\n");
+                        }
+                        if(sorteio2 == 1)
+                        {
+                            jTextArea1.append(array[1] + " - "+ candidatos.getElementAt(2)+"\n");
+                            jTextArea1.append(array[2] + " - "+ candidatos.getElementAt(1)+"\n");
+                        }
+                        
+                    }
+                    if(sorteio == 1)
+                    {
+                        int sorteio2 = randInt(0,1);
+                        if(sorteio2 == 0)
+                        {
+                            jTextArea1.append(array[1] + " - "+ candidatos.getElementAt(sorteio2)+"\n");
+                            jTextArea1.append(array[2] +  " - "+candidatos.getElementAt(2)+"\n");
+                        }
+                        if(sorteio2 == 1)
+                        {
+                            jTextArea1.append(array[1] + " - "+ candidatos.getElementAt(2)+"\n");
+                            jTextArea1.append(array[2] + " - "+ candidatos.getElementAt(0)+"\n");
+                        }
+                        
+                    }
+                     if(sorteio == 2)
+                    {
+                        int sorteio2 = randInt(0,1);
+                        if(sorteio2 == 0)
+                        {
+                            jTextArea1.append(array[1] +" - "+  candidatos.getElementAt(sorteio2)+"\n");
+                            jTextArea1.append(array[2] + " - "+ candidatos.getElementAt(1)+"\n");
+                        }
+                        if(sorteio2 == 1)
+                        {
+                            jTextArea1.append(array[1] + " - "+ candidatos.getElementAt(1)+"\n");
+                            jTextArea1.append(array[2] +  " - "+ candidatos.getElementAt(0)+"\n");
+                        }
+                        
+                    }
+                }
+                
+                
+                
+            }
+        }else{
+            jTextArea1.setText("Please Choose the Number of Rooms available on the House in the Checkboxes Above aswell as the candidates...");
+            
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,7 +674,12 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JMenu jMenu1;
@@ -311,11 +687,21 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton leftbtn;
     private javax.swing.JTextField nameaddfield;
     private javax.swing.JButton rightbtn;
+    private javax.swing.JCheckBox t2btn;
+    private javax.swing.JCheckBox t3btn;
+    private javax.swing.JCheckBox t4btn;
+    private javax.swing.JCheckBox t5btn;
     // End of variables declaration//GEN-END:variables
 }
