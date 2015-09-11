@@ -1,5 +1,5 @@
 # BuddyRoomRandomizer
-<a href="http://creativecommons.org/licenses/by-nd/4.0/"><img src="https://img.shields.io/badge/license-CC%20BY--ND-yellow.svg" alt="license.svg"> </a>
+<a href="http://creativecommons.org/licenses/by-nd/4.0/" target="_blank"><img src="https://img.shields.io/badge/license-CC%20BY--ND-yellow.svg" alt="license.svg"> </a>
 
 #Description
  - Small App to assign random rooms in a totally random way without any kind of interference. This App was written in Java uses SWING for its GUI and also uses custom functions for randomizing the rooms.
